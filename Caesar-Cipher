@@ -1,0 +1,35 @@
+def encrypt(text,s): 
+    result = "" 
+  
+    for i in range(len(text)): 
+        char = text[i] 
+        if char== ' ':
+             result = result + char
+        elif(char.isupper()): 
+            result += chr((ord(char) + s-65) % 26 + 65) 
+  
+        else: 
+            result += chr((ord(char) + s - 97) % 26 + 97) 
+  
+    return result
+def decrypt(text,s): 
+    result = "" 
+  
+    for i in range(len(text)): 
+        char = text[i] 
+        if char== ' ':
+             result = result + char
+        elif (char.isupper()): 
+            result += chr((ord(char) - s - 65) % 26 + 65) 
+  
+        else: 
+            result += chr((ord(char) - s - 97) % 26 + 97) 
+        
+    return result 
+
+text=input("Enter Plain text:" )
+s=int(input("Key : "))
+enc=encrypt(text,s) 
+print ("\nCipher Text (Encryption): " + enc)
+print ("Key : " + str(s) )
+print ("\nPlain text (Decryption): " + decrypt(enc,s) )
